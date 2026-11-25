@@ -1,0 +1,32 @@
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    // Dem so cap (a, b) co b - a = k. Cac phan tu la duy nhat nen dung HashSet.
+    public static int pairs(int k, List<Integer> arr) {
+        Set<Integer> set = new HashSet<>(arr);
+        int count = 0;
+        for (int x : arr) {
+            if (set.contains(x + k)) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st = new StringTokenizer(br.readLine());
+        int n = Integer.parseInt(st.nextToken());
+        int k = Integer.parseInt(st.nextToken());
+
+        List<Integer> arr = new ArrayList<>(n);
+        st = new StringTokenizer(br.readLine());
+        for (int i = 0; i < n; i++) {
+            arr.add(Integer.parseInt(st.nextToken()));
+        }
+
+        System.out.println(pairs(k, arr));
+    }
+}
